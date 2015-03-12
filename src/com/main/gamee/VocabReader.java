@@ -16,6 +16,8 @@ public class VocabReader {
 		populateArray();
 		printWords();
 
+		//this is a change
+		
 		// List<String> words = new ArrayList<String>();
 		// populateArray(vocabReader, inFile1, words);
 		// System.out.println(wordsArray[wordsArray.length -1]);
