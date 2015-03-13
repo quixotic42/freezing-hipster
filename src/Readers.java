@@ -1,11 +1,12 @@
-package com.main.gamee;
+package main;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
-public class VocabReader {
+public class Readers {
 
 	public static String[] wordsArray;
 	static List<String> words = new ArrayList<String>();
@@ -14,7 +15,7 @@ public class VocabReader {
 	public static void main(String[] args) throws IOException {
 
 		populateArray();
-		printWords();
+//		printWords();
 		System.out.println(wordsArray.length);  
 
 		// List<String> words = new ArrayList<String>();
@@ -24,13 +25,22 @@ public class VocabReader {
 		// System.out.println(getWordsArray(0));
 	}
 
+	public static String[] populateArray() {
+		Scanner inFile = openFileForReading();
 
+		while (inFile.hasNext()) {
+			token1 = readWord(inFile);
+			words.add(token1);
+			wordsArray = words.toArray(new String[0]);
+		}
+		return wordsArray;
+	}
 
 	public static Scanner openFileForReading() {
 		Scanner scanner = null;
 		try {
-			scanner = new Scanner(new File("words.txt"))
-			scanner = scanner.useDelimiter("\", *\""); 
+			scanner = new Scanner(new File("words.txt"));
+			scanner = scanner.useDelimiter("\", *\"");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,20 +49,9 @@ public class VocabReader {
 	}
 
 	public static String readWord(Scanner inFile) {
-		token = inFile.next();
-		token = token.replace("\"", "").trim();
-		return token;
-	}
-	
-	public static String[] populateArray() {
-		Scanner inFile = openFileForReading();
-
-		while (inFile.hasNext()) {
-			token = readWord(inFile);
-			words.add(token);
-			wordsArray = words.toArray(new String[0]);
-		}
-		return wordsArray;
+		token1 = inFile.next();
+		token1 = token1.replace("\"", "").trim();
+		return token1;
 	}
 
 	public static void printWords() {
@@ -61,3 +60,4 @@ public class VocabReader {
 		}
 	}
 }
+
